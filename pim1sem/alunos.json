@@ -1,1 +1,1 @@
-{"IsaacMedeirosA": {"Senha": "123", "Funcao": "A", "nomeCompleto": "Isaac de Medeiros"}, "RafaelFredericoP": {"Senha": "123", "Funcao": "P", "nomeCompleto": "RafaelFredericoP"}}
+{"IsaacMedeirosA": {"senha": "123", "funcao": "A", "nomeCompleto": "Isaac de Medeiros", "tempoUso": 0, "tempoMedio": 0, "sessoes": 0, "notaSemestre1": 0, "notaSemestre2": 0, "media": 0}, "RafaelFredericoP": {"senha": "123", "funcao": "P", "nomeCompleto": "Rafael Frederico", "tempoUso": 0, "tempoMedio": 0, "sessoes": 0, "notaSemestre1": 0, "notaSemestre2": 0, "media": 0}}

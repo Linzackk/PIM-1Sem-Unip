@@ -1,5 +1,6 @@
 from util.arquivos import *
 from util.funcionalidades import *
+from util import *
 cores = {
     "0": "\033[m",
     "red": "\033[1;31m",
@@ -7,7 +8,6 @@ cores = {
     "green": "\033[1;32m",
     "yellow": "\033[1;33m"
 }
-
 def titulo(msg=''):
     tam = len(msg) + 4
     print('-' * tam)

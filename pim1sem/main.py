@@ -1,6 +1,8 @@
+from time import time
 from util.estrutura import *
 from util.arquivos import *
 from util.funcionalidades import *
+from util import *
 cores = {
     "0": "\033[m",
     "red": "\033[1;31m",
@@ -9,31 +11,38 @@ cores = {
 }
 
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
-
+with open('alunos.json', 'r') as file:
+    alunos: dict = json.loads('\n'.join(file.readlines()))
+usuario = ''
 titulo('PLATAFORMA EDUCACIONAL DIGITAL')
-login = login()
-if login in 'AP':
+
+while True:
+    registro = login()
+    if registro in alunos:
+        usuario = registro
+        break
+hora_login = time()
+log = alunos[usuario]
     #Começar a Contar o Inicio de Tempo.
-    while True:
-        if login == 'A':
-            opc = ['Video-Aulas', 'Notas', 'Grade Curricular', '']
-            titulo('ÁREA DO ALUNO')
-            menu(opc)
-            e = escolha(len(opc))
-            if not e:
-                break
 
-        else:
-            opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
-            titulo('ÁREA DO PROFESSOR')
-            menu(opc)
-            e = escolha(len(opc))
-            print(e)
+while True:
+    if log["funcao"] == 'A':
+        opc = ['Video-Aulas', 'Notas', 'Grade Curricular', 'Sair']
+        titulo('ÁREA DO ALUNO')
+        menu(opc)
+        e = escolha(len(opc))
+        if e == len(opc) - 1:
+            break
+    else:
+        opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
+        titulo('ÁREA DO PROFESSOR')
+        menu(opc)
+        e = escolha(len(opc))
+        if e == len(opc) - 1:
+            break
 
-if login not in 'AP':
-    print(f'{cores["red"]}ERRO, FUNCAO NÃO VALIDADA.{cores["0"]}')
-else:
-    print(f'{cores["red"]}Encerrando, volte sempre.{cores["0"]}')
+print(f'{cores["red"]}Encerrando, volte sempre.{cores["0"]}')
+hora_logoff = time()
     # Contar o Horario de Saída.
 
 
