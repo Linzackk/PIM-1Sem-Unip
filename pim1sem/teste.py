@@ -1,5 +1,6 @@
-{
-  "IsaacMedeirosA": {
+from operator import index
+
+dicionario = {"IsaacMedeirosA": {
     "senha": "123",
     "funcao": "A",
     "nomeCompleto": "Isaac de Medeiros",
@@ -20,5 +21,5 @@
     "notaSemestre1": 0,
     "notaSemestre2": 0,
     "media": 0
-  }
-}
+  }}
+print(dicionario.keys())

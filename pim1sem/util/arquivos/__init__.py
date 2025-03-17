@@ -1,4 +1,6 @@
 from json import JSONDecodeError
+from operator import index
+
 from util.estrutura import *
 from util.funcionalidades import *
 from util import *
@@ -50,5 +52,20 @@ def add_conta():
         file.write(login)
         print(f'{cores["green"]}Salvo com Sucesso!{cores["0"]}')
 
+def att_hora(usuario, hrI, hrF):
+    alunos = {}
+    with open('alunos.json', 'r') as file:
+        alunos = json.loads('\n'.join(file.readlines()))
+    hr_total = abs(int(hrI - hrF))
+    log = alunos[usuario]
+    log["tempoUso"] += hr_total
+    log["sessoes"] += 1
+    log["tempoMedio"] = log["tempoUso"] / log["sessoes"]
+    novo = json.dumps(alunos)
+    with open('alunos.json','w') as subs:
+        subs.write(novo)
+        print(f'{cores["green"]}V{cores["0"]}')
 
+#def att_nota():
 
+#def hr_aula():

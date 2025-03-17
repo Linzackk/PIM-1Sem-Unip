@@ -1,4 +1,5 @@
-from time import time
+from sys import addaudithook
+from time import time, sleep
 from util.estrutura import *
 from util.arquivos import *
 from util.funcionalidades import *
@@ -9,7 +10,7 @@ cores = {
     "blue": "\033[1;34m",
     "green": "\033[1;32m"
 }
-
+# add_conta()
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
 with open('alunos.json', 'r') as file:
     alunos: dict = json.loads('\n'.join(file.readlines()))
@@ -24,7 +25,7 @@ while True:
 hora_login = time()
 log = alunos[usuario]
     #Começar a Contar o Inicio de Tempo.
-
+e = -1
 while True:
     if log["funcao"] == 'A':
         opc = ['Video-Aulas', 'Notas', 'Grade Curricular', 'Sair']
@@ -33,16 +34,28 @@ while True:
         e = escolha(len(opc))
         if e == len(opc) - 1:
             break
-    else:
+    if log["funcao"] == 'P':
         opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
         titulo('ÁREA DO PROFESSOR')
         menu(opc)
         e = escolha(len(opc))
         if e == len(opc) - 1:
             break
+        elif e == 0:
+            add_conta()
+        elif e == 1:
+            print()
+            #att_nota()
+        elif e == 2:
+            print()
+            #hr_aula()
+
+
 
 print(f'{cores["red"]}Encerrando, volte sempre.{cores["0"]}')
 hora_logoff = time()
+att_hora(usuario, hora_login, hora_logoff)
+
     # Contar o Horario de Saída.
 
 
