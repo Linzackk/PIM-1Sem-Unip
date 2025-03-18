@@ -18,6 +18,31 @@ except FileNotFoundError:
 finally:
     a.close()
 
+def verify_user(nomeSplit, usuario, funcao):
+    with open('alunos.json', 'r') as file:
+        try:
+            lstPessoas = json.loads('\n'.join(file.readlines()))
+        except JSONDecodeError:
+            lstPessoas = {}
+    cont = -1
+    num = 1
+    tamanho_nome = len(nomeSplit)
+    while usuario in lstPessoas:
+        if tamanho_nome <= 3:
+            if nomeSplit[1] in 'DaDeDo':
+                usuario = nomeSplit[0] + nomeSplit[-1] + str(num) + funcao
+            else:
+                usuario = nomeSplit[0] + nomeSplit[-1] + str(num) + funcao
+        else:
+            while usuario in lstPessoas and cont > -tamanho_nome:
+                if nomeSplit[cont] not in 'DaDeDo':
+                    usuario = nomeSplit[0] + nomeSplit[cont] + funcao
+                    cont -= 1
+                else:
+                    cont -= 1
+        num += 1
+    return usuario
+
 def add_conta():
      with open('alunos.json', 'r') as file:
          try:
@@ -26,7 +51,7 @@ def add_conta():
             dict_db = {}
      nomeCompleto = str(input('Nome COMPLETO do Aluno: '))
      nomeSplit = nomeCompleto.lower().title().split()
-     job = funcao()
+     job = str(input('Função: ')).upper()[0]
      senha = '123'
      tempo_uso = 0
      tempo_medio_uso = 0
@@ -36,6 +61,7 @@ def add_conta():
      media = 0
 
      usuario = nomeSplit[0] + nomeSplit[-1] + job
+     usuario = verify_user(nomeSplit,usuario, job)
      dict_db[usuario] = {
          "senha": senha,
          "funcao": job,
@@ -47,10 +73,11 @@ def add_conta():
          "notaSemestre2": nota2,
          "media": media
      }
-     login = json.dumps(dict_db)
+     login = json.dumps(dict_db,indent=4)
+
      with open('alunos.json', 'w') as file:
-        file.write(login)
-        print(f'{cores["green"]}Salvo com Sucesso!{cores["0"]}')
+         file.write(login)
+         print(f'{cores["green"]}Salvo com Sucesso!{cores["0"]}')
 
 def att_hora(usuario, hrI, hrF):
     alunos = {}
@@ -61,7 +88,7 @@ def att_hora(usuario, hrI, hrF):
     log["tempoUso"] += hr_total
     log["sessoes"] += 1
     log["tempoMedio"] = log["tempoUso"] / log["sessoes"]
-    novo = json.dumps(alunos)
+    novo = json.dumps(alunos,indent=4)
     with open('alunos.json','w') as subs:
         subs.write(novo)
         print(f'{cores["green"]}V{cores["0"]}')

@@ -1,4 +1,3 @@
-from sys import addaudithook
 from time import time, sleep
 from util.estrutura import *
 from util.arquivos import *
@@ -10,7 +9,7 @@ cores = {
     "blue": "\033[1;34m",
     "green": "\033[1;32m"
 }
-# add_conta()
+#add_conta()
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
 with open('alunos.json', 'r') as file:
     alunos: dict = json.loads('\n'.join(file.readlines()))
@@ -18,9 +17,8 @@ usuario = ''
 titulo('PLATAFORMA EDUCACIONAL DIGITAL')
 
 while True:
-    registro = login()
-    if registro in alunos:
-        usuario = registro
+    usuario = login()
+    if usuario in alunos:
         break
 hora_login = time()
 log = alunos[usuario]
@@ -34,6 +32,7 @@ while True:
         e = escolha(len(opc))
         if e == len(opc) - 1:
             break
+
     if log["funcao"] == 'P':
         opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
         titulo('ÁREA DO PROFESSOR')
