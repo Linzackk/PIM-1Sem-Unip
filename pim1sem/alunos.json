@@ -1,24 +1,40 @@
 {
-  "IsaacMedeirosA": {
-    "senha": "123",
-    "funcao": "A",
-    "nomeCompleto": "Isaac de Medeiros",
-    "tempoUso": 20,
-    "tempoMedio": 4.0,
-    "sessoes": 5,
-    "notaSemestre1": 0,
-    "notaSemestre2": 0,
-    "media": 0
-  },
-  "RafaelFredericoP": {
-    "senha": "123",
-    "funcao": "P",
-    "nomeCompleto": "Rafael Frederico",
-    "tempoUso": 0,
-    "tempoMedio": 0,
-    "sessoes": 0,
-    "notaSemestre1": 0,
-    "notaSemestre2": 0,
-    "media": 0
-  }
+    "IsaacMedeirosP": {
+        "senha": "123",
+        "funcao": "P",
+        "nomeCompleto": "Isaac de Medeiros",
+        "tempoUso": 80,
+        "tempoMedio": 16.0,
+        "sessoes": 5,
+        "semestre1": [
+            0,
+            0,
+            0
+        ],
+        "semestre2": [
+            0,
+            0,
+            0
+        ],
+        "media": 0
+    },
+    "IsaacMedeirosA": {
+        "senha": "123",
+        "funcao": "A",
+        "nomeCompleto": "Isaac de Medeiros",
+        "tempoUso": 0,
+        "tempoMedio": 0,
+        "sessoes": 0,
+        "semestre1": [
+            7,
+            8,
+            7.5
+        ],
+        "semestre2": [
+            8,
+            6,
+            7.0
+        ],
+        "media": 0
+    }
 }

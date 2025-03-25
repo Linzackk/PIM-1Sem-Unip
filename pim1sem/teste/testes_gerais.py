@@ -1,34 +1,12 @@
-num = 1
-dicionario = {
-        "IsaacMedeiros": '123'
-    }
-def add_pessoa(lstPessoas):
-    num = 1
-    nomeCompleto = str(input('Nome COMPLETO do Aluno: '))
-    nomeSplit = nomeCompleto.lower().title().split()
-    usuario = nomeSplit[0] + nomeSplit[-1]
-    tamanho_nome = len(nomeSplit)
-
-
-    cont = -1
-    while usuario in lstPessoas:
-        if tamanho_nome <= 3:
-            if nomeSplit[1] in 'DaDeDo':
-                usuario = nomeSplit[0] + nomeSplit[-1] + str(num)
-                print(usuario)
-            else:
-                usuario = nomeSplit[0] + nomeSplit[-1] + str(num)
-        else:
-            while usuario in dicionario and cont > -tamanho_nome:
-                if nomeSplit[cont] not in 'DaDeDo':
-                    usuario = nomeSplit[0] + nomeSplit[cont]
-                    cont -= 1
-                else:
-                    cont -= 1
-        num += 1
-    print(usuario)
-    print(lstPessoas)
-    dicionario[usuario] = '123'
-    print(lstPessoas)
-add_pessoa(dicionario)
-
+negativos = 0
+positivos = 0
+e = 0
+while e != 999:
+    e = int(input('[ 999 ] - Parar \nInsira um Valor Real: '))
+    if e == 999:
+        break
+    elif e < 0:
+        negativos += 1
+    elif e >= 0:
+        positivos += 1
+print(f'Foram Inseridos {negativos} números negativos e {positivos} números positivos')

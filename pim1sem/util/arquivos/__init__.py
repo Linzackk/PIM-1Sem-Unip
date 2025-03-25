@@ -18,6 +18,11 @@ except FileNotFoundError:
 finally:
     a.close()
 
+def abrir_dados():
+    with open('alunos.json', 'r') as file:
+        lstPessoas = json.loads('\n'.join(file.readlines()))
+    return lstPessoas
+
 def verify_user(nomeSplit, usuario, funcao):
     with open('alunos.json', 'r') as file:
         try:
@@ -59,7 +64,6 @@ def add_conta():
      nota1 = 0
      nota2 = 0
      media = 0
-
      usuario = nomeSplit[0] + nomeSplit[-1] + job
      usuario = verify_user(nomeSplit,usuario, job)
      dict_db[usuario] = {
@@ -69,8 +73,8 @@ def add_conta():
          "tempoUso": tempo_uso,
          "tempoMedio": tempo_medio_uso,
          "sessoes": sessoes,
-         "notaSemestre1": nota1,
-         "notaSemestre2": nota2,
+         "semestre1": [0,0,0],
+         "semestre2": [0,0,0],
          "media": media
      }
      login = json.dumps(dict_db,indent=4)

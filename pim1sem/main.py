@@ -10,9 +10,10 @@ cores = {
     "green": "\033[1;32m"
 }
 #add_conta()
+#att_nota()
+#ver_notas('IsaacMedeirosA')
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
-with open('alunos.json', 'r') as file:
-    alunos: dict = json.loads('\n'.join(file.readlines()))
+alunos = abrir_dados()
 usuario = ''
 titulo('PLATAFORMA EDUCACIONAL DIGITAL')
 
@@ -32,6 +33,16 @@ while True:
         e = escolha(len(opc))
         if e == len(opc) - 1:
             break
+        elif e == 0:
+            print()
+            #faz abrir o arquivo das video aulas se der
+        elif e == 1:
+            ver_notas(usuario)
+            #mostra as notas
+        elif e == 2:
+            print()
+            #mostrar Grade Curricular
+
 
     if log["funcao"] == 'P':
         opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
@@ -43,8 +54,7 @@ while True:
         elif e == 0:
             add_conta()
         elif e == 1:
-            print()
-            #att_nota()
+            att_nota()
         elif e == 2:
             print()
             #hr_aula()
