@@ -1,9 +1,8 @@
 from time import time, sleep
-import os
+import util.estrutura.estrutura as est
+import util.arquivos.arquivos as arq
+import util.funcionalidades.funcionalidades as fun
 
-import util.estrutura as est
-import util.funcionalidades as fun
-import util.arquivos as arq
 
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
 alunos = arq.abrir_dados()

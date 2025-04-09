@@ -76,13 +76,13 @@
         ]
     },
     "isaacmedeirosal": {
-        "senha": "123321",
+        "senha": "123",
         "funcao": "AL",
         "curso": "ADS",
         "nomeCompleto": "Isaac de Medeiros",
-        "tempoUso": 100,
-        "tempoMedio": 16.666666666666668,
-        "sessoes": 6,
+        "tempoUso": 160,
+        "tempoMedio": 17.77777777777778,
+        "sessoes": 9,
         "semestre1": [
             0,
             0,
