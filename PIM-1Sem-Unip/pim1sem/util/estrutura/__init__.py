@@ -1,21 +1,20 @@
-from util.arquivos import *
-from util.funcionalidades import *
-from util import *
-cores = {
-    "0": "\033[m",
-    "red": "\033[1;31m",
-    "blue": "\033[1;34m",
-    "green": "\033[1;32m",
-    "yellow": "\033[1;33m"
-}
+menu_aluno = ['Video-Aulas', 'Notas', 'Grade Curricular', 'Alterar Senha', 'Sair']
+menu_prof = ['Atribuir Notas', 'Horário de Aulas', 'Alterar Senha', 'Sair']
+menu_adm = ['Adicionar Conta', 'Alterar Senhas', 'Sair'] #outras configs
+
+def linha(tam):
+    print('-' * (tam + 4))
+
 def titulo(msg=''):
-    tam = len(msg) + 4
-    print('-' * tam)
-    print(msg.center(tam))
-    print('-' * tam)
+    linha(len(msg))
+    print(msg.center(len(msg)))
+    linha(len(msg))
 
 def menu(lst):
     cont = 0
+    linha(26)
     for c in lst:
-        print(f'{cores["yellow"]}[ {cont} ] {cores["0"]}- {cores["blue"]}{c}{cores["0"]}')
+        print(f'[ {cont} ] - {c}')
         cont += 1
+    linha(26)
+

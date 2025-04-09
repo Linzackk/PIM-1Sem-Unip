@@ -1,85 +1,72 @@
 from time import time, sleep
-from util.estrutura import *
-from util.arquivos import *
-from util.funcionalidades import *
-from util import *
-cores = {
-    "0": "\033[m",
-    "red": "\033[1;31m",
-    "blue": "\033[1;34m",
-    "green": "\033[1;32m"
-}
-#add_conta()
-att_nota()
-#ver_notas('IsaacMedeirosA')
+import os
+
+import util.estrutura as est
+import util.funcionalidades as fun
+import util.arquivos as arq
+
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
-alunos = abrir_dados()
+alunos = arq.abrir_dados()
 usuario = ''
-titulo('PLATAFORMA EDUCACIONAL DIGITAL')
+est.titulo('PLATAFORMA EDUCACIONAL DIGITAL')
 
 while True:
-    usuario = login()
+    usuario = fun.login()
     if usuario in alunos:
         break
+os.system('cls')
+
+#Começar a Contar o Inicio de Tempo.
 hora_login = time()
 log = alunos[usuario]
-    #Começar a Contar o Inicio de Tempo.
+
 e = -1
-while True:
-    if log["funcao"] == 'A':
-        opc = ['Video-Aulas', 'Notas', 'Grade Curricular', 'Sair']
-        titulo('ÁREA DO ALUNO')
-        menu(opc)
-        e = escolha(len(opc))
-        if e == len(opc) - 1:
-            break
-        elif e == 0:
+if log["funcao"] == 'AL': # Menu Alunos
+    while e != len(est.menu_aluno) - 1:
+        est.titulo('ÁREA DO ALUNO')
+        est.menu(est.menu_aluno)
+        e = fun.escolha(len(est.menu_aluno))
+        if e == 0:
             print()
             #faz abrir o arquivo das video aulas se der
         elif e == 1:
-            ver_notas(usuario)
+            fun.ver_notas(usuario)
             #mostra as notas
+            os.system('cls')
         elif e == 2:
-            print()
+            fun.ver_grade(log["curso"])
             #mostrar Grade Curricular
+            os.system('cls')
+        elif e == 3:
+            arq.alterar_senha(alunos, usuario)
+            os.system('cls')
 
-
-    if log["funcao"] == 'P':
-        opc = ['Adicionar Aluno', 'Atribuir Notas', 'Horário de Aulas', 'Sair']
-        titulo('ÁREA DO PROFESSOR')
-        menu(opc)
-        e = escolha(len(opc))
-        if e == len(opc) - 1:
-            break
-        elif e == 0:
-            add_conta()
+elif log["funcao"] == 'PR': # Menu Professor
+    while e != len(est.menu_prof) - 1:
+        est.titulo('ÁREA DO PROFESSOR')
+        est.menu(est.menu_prof)
+        e = fun.escolha(len(est.menu_prof))
+        if e == 0:
+            fun.att_nota()
+            os.system('cls')
         elif e == 1:
-            att_nota()
-        elif e == 2:
             print()
             #hr_aula()
+            os.system('cls')
+        elif e == 2:
+            arq.alterar_senha(alunos, usuario)
+            os.system('cls')
 
+elif log["funcao"] == 'AD': # Menu Admistrativo
+    while e != len(est.menu_adm) - 1:
+        est.titulo('ADMINISTRAÇÃO')
+        est.menu(est.menu_adm)
+        e = fun.escolha(len(est.menu_adm))
+        if e == 0:
+            arq.add_conta()
+            os.system('cls')
 
-
-print(f'{cores["red"]}Encerrando, volte sempre.{cores["0"]}')
+print(f'Deslogando..')
 hora_logoff = time()
-att_hora(usuario, hora_login, hora_logoff)
+arq.att_hora(usuario, hora_login, hora_logoff)
 
-    # Contar o Horario de Saída.
-
-
-# Quando logado contar a hora de login
-# Quando der Logout contar a hora de logout
-# Tempo de uso da plataforma é o (hora de login - hora de logout)
-
-# No login precisa de usuário e senha
-# Terão Usuários: Aluno e Professor
-# Certos usuarios tem acessos diferentes
-
-# Usuário Aluno vai ter acesso a:
-    # VideoAulas, Notas (1 sem, 2 sem, media), Grade (opcional)
-
-# Usuário Professor vai ter acesso a:
-    # Adicionar novos alunos.
-    # Definir notas (opcional)
-    
