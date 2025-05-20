@@ -4,9 +4,9 @@
         "funcao": "PR",
         "curso": "",
         "nomeCompleto": "Isaac de Medeiros",
-        "tempoUso": 49,
-        "tempoMedio": 16.333333333333332,
-        "sessoes": 3,
+        "tempoUso": 50,
+        "tempoMedio": 12.5,
+        "sessoes": 4,
         "semestre1": [
             0,
             0,
@@ -76,13 +76,13 @@
         ]
     },
     "isaacmedeirosal": {
-        "senha": "123",
+        "senha": "123321",
         "funcao": "AL",
         "curso": "ADS",
         "nomeCompleto": "Isaac de Medeiros",
-        "tempoUso": 160,
-        "tempoMedio": 17.77777777777778,
-        "sessoes": 9,
+        "tempoUso": 102,
+        "tempoMedio": 12.75,
+        "sessoes": 8,
         "semestre1": [
             0,
             0,
