@@ -6,8 +6,11 @@ import util.funcionalidades as fun
 import util.arquivos as arq
 
 # Fazer para Rodar em um CMD (Limpando o Terminal a Cada mudança de Página)
+
 alunos = arq.abrir_dados()
+
 while True:
+    os.system('cls')
     usuario = ''
     est.titulo('PLATAFORMA EDUCACIONAL DIGITAL')
 
@@ -24,6 +27,7 @@ while True:
     e = -1
     if log["funcao"] == 'AL': # Menu Alunos
         while e != len(est.menu_aluno) - 1:
+            os.system('cls')
             est.titulo('ÁREA DO ALUNO')
             est.menu(est.menu_aluno)
             e = fun.escolha(len(est.menu_aluno))
@@ -43,6 +47,7 @@ while True:
                 os.system('cls')
 
     elif log["funcao"] == 'PR': # Menu Professor
+        os.system('cls')
         while e != len(est.menu_prof) - 1:
             est.titulo('ÁREA DO PROFESSOR')
             est.menu(est.menu_prof)
@@ -59,6 +64,7 @@ while True:
                 os.system('cls')
 
     elif log["funcao"] == 'AD': # Menu Admistrativo
+        os.system('cls')
         while e != len(est.menu_adm) - 1:
             est.titulo('ADMINISTRAÇÃO')
             est.menu(est.menu_adm)

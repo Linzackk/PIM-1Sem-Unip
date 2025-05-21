@@ -1,11 +1,11 @@
 from json import JSONDecodeError
 import json
-import pim1sem.util.estrutura as est
+import util.estrutura as est
 
 try:
-    a = open('alunos.json', 'r')
+    a = open('usuarios.json', 'r')
 except FileNotFoundError:
-    a = open('alunos.json', 'x')
+    a = open('usuarios.json', 'x')
 finally:
     a.close()
 
@@ -14,7 +14,7 @@ def abrir_dados():
     Abre o Banco de Dados das contas
     :return: o banco de dados em formato dict.
     """
-    with open('alunos.json', 'r') as file:
+    with open('usuarios.json', 'r') as file:
         lstPessoas = json.loads('\n'.join(file.readlines()))
     return lstPessoas
 
@@ -26,16 +26,14 @@ def verify_user(nomeCompleto, usuario, funcao):
     :param funcao: Aluno, Professor ou Administrativo
     :return: o usuario com nenhum outro dentro do banco de dados
     """
-    with open('alunos.json', 'r') as file:
+    with open('usuarios.json', 'r') as file:
         try:
             lstPessoas = json.loads('\n'.join(file.readlines()))
         except JSONDecodeError:
             lstPessoas = {}
 
     usuario = usuario.lower()
-    print(nomeCompleto)
     nomeSplit = nomeCompleto.lower().split()
-    print(nomeSplit)
     funcao = funcao.lower()
     cont = -1
     num = 1
@@ -59,7 +57,7 @@ def add_conta():
     Função que adiciona uma conta ao banco de dados
     :return: none
     """
-    with open('alunos.json', 'r') as file:
+    with open('usuarios.json', 'r') as file:
         try:
             dict_db = json.loads('\n'.join(file.readlines()))
         except JSONDecodeError:
@@ -94,7 +92,7 @@ def add_conta():
     }
     login = json.dumps(dict_db,indent=4)
 
-    with open('alunos.json', 'w') as file:
+    with open('usuarios.json', 'w') as file:
         file.write(login)
         print(f'Salvo com Sucesso!')
 
@@ -107,7 +105,7 @@ def att_hora(usuario, hrI, hrF):
     :return: none
     """
     alunos = {}
-    with open('alunos.json', 'r') as file:
+    with open('usuarios.json', 'r') as file:
         alunos = json.loads('\n'.join(file.readlines()))
     hr_total = abs(int(hrI - hrF))
     log = alunos[usuario]
@@ -115,7 +113,7 @@ def att_hora(usuario, hrI, hrF):
     log["sessoes"] += 1
     log["tempoMedio"] = log["tempoUso"] / log["sessoes"]
     novo = json.dumps(alunos,indent=4)
-    with open('alunos.json','w') as subs:
+    with open('usuarios.json','w') as subs:
         subs.write(novo)
         print(f'V')
 
@@ -141,7 +139,7 @@ def alterar_senha(lst, usuario):
             log["senha"] = nova_senha
             print(log["senha"])
             novo = json.dumps(lst, indent=4)
-            with open('alunos.json', 'w') as subs:
+            with open('usuarios.json', 'w') as subs:
                 subs.write(novo)
                 print(f'V')
             est.linha(16)

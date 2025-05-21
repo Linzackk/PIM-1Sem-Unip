@@ -1,6 +1,6 @@
 import json
-import pim1sem.util.arquivos as arq
-import pim1sem.util.estrutura as est
+import util.arquivos as arq
+import util.estrutura as est
 
 def funcao():
     """
@@ -20,7 +20,7 @@ def login():
     Menu onde o login acontece, recebe o usuário e senha e valida com as informações contidas no Banco de dados "alunos.json"
     :return: O usuario caso ele exista no sistema.
     """
-    with open('alunos.json', 'r') as file:
+    with open('usuarios.json', 'r') as file:
         try:
             alunos: dict = json.loads('\n'.join(file.readlines()))
         except JSONDecodeError:
@@ -49,12 +49,12 @@ def escolha(n):
     :return: o numero caso seja válido
     """
     while True:
-        esc = int(input('Insira Sua Escolha: '))
-        if 0 > esc or esc > n - 1:
-            print(f'Escolha Inválida.')
-        else:
-            break
-    return esc
+        esc = input('Insira sua Escolha: ').strip()
+        if esc.isdigit() != True or esc.count('.') > 0:
+            print('ESCOLHA INVÁLIDA.')
+        elif int(esc) > n - 1 or int(esc) < 0:
+            return int(esc)
+
 
 def ver_notas(usuario):
     """
@@ -93,11 +93,19 @@ def att_nota():
         :param usuario: usuario do aluno
         :return: none
         """
+        def valor_nota():
+            while True:
+                valor = input('Nota: ').strip()
+                if ',' in valor:
+                    valor = valor.replace(',', '.')
+                if valor.replace('.', '').isdigit() and valor.count('.') <= 1:
+                    return float(valor)
+                else:
+                    print('Nota inválida.')
         dados_aluno = dados_alunos[usuario]
         nota_semestre = dados_aluno[sem]
 
-        print('Nota: ')
-        nota = escolha(11)
+        nota = valor_nota()
         nota_semestre[prova - 1] = nota
 
         np1 = nota_semestre[0]
@@ -107,7 +115,7 @@ def att_nota():
         dados_aluno[sem] = nota_semestre
         novos_dados = json.dumps(dados_alunos, indent=4)
 
-        with open('alunos.json', 'w') as subs:
+        with open('usuarios.json', 'w') as subs:
              subs.write(novos_dados)
 
     dados = arq.abrir_dados()
