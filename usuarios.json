@@ -1,0 +1,59 @@
+{
+    "isaacmedeirosal": {
+        "senha": "123",
+        "funcao": "AL",
+        "curso": "ADS",
+        "nomeCompleto": "Isaac De Medeiros",
+        "tempoUso": 1,
+        "tempoMedio": 1.0,
+        "sessoes": 1,
+        "semestre1": [
+            8,
+            8.5,
+            8.25
+        ],
+        "semestre2": [
+            0,
+            0,
+            0
+        ]
+    },
+    "isaacmedeirospr": {
+        "senha": "123",
+        "funcao": "PR",
+        "curso": "",
+        "nomeCompleto": "Isaac De Medeiros",
+        "tempoUso": 1,
+        "tempoMedio": 1.0,
+        "sessoes": 1,
+        "semestre1": [
+            0,
+            0,
+            0
+        ],
+        "semestre2": [
+            0,
+            0,
+            0
+        ]
+    },
+    "isaacmedeirosad": {
+        "senha": "123",
+        "funcao": "AD",
+        "curso": "",
+        "nomeCompleto": "Isaac De Medeiros",
+        "tempoUso": 0,
+        "tempoMedio": 0,
+        "sessoes": 0,
+        "semestre1": [
+            0,
+            0,
+            0
+        ],
+        "semestre2": [
+            0,
+            0,
+            0
+        ]
+    }
+}
